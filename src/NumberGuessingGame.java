@@ -15,12 +15,26 @@ public class NumberGuessingGame {
         Random random = new Random();
         int secretNumber = random.nextInt(100) + 1;
 
-        int choice = selectDifficulty(sc);
-        System.out.println("You have " + choice + " attempts!");
+        int attempts = selectDifficulty(sc);
+        System.out.println("You have " + attempts + " attempts!");
 
-        System.out.println("Enter your guess: ");
-        int guess = sc.nextInt();
+        int usedAttempts = 0;
+        boolean hit = false;
 
+        while (usedAttempts < attempts && !hit) {
+            usedAttempts++;
+            System.out.println("\nAttempts " +  usedAttempts + "/" +  attempts + ": ");
+            int guess = sc.nextInt();
+
+            if (guess == secretNumber) {
+                hit = true;
+                System.out.println("Congratulations! You guessed the correct number in " + usedAttempts + " attempts.");
+            } else if (guess > secretNumber) {
+                System.out.println("Incorrect! The number is less than " + guess + ".");
+            } else {
+                System.out.println("Incorrect! The number is greater than " + guess + ".");
+            }
+        }
 
         sc.close();
     }
