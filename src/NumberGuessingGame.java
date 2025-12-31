@@ -9,7 +9,7 @@ public class NumberGuessingGame {
         System.out.println("""
                 Welcome to the Number Guessing Game!
                 I'm thinking of a number between 1 and 100.
-                You have 5 chances to guess the correct number.
+                You have some chances to guess the correct number.
                 """);
 
         Random random = new Random();
@@ -34,6 +34,11 @@ public class NumberGuessingGame {
             } else {
                 System.out.println("Incorrect! The number is greater than " + guess + ".");
             }
+        }
+
+        if (!hit) {
+            System.out.println("\nGame Over!");
+            System.out.println("The secret number is " + secretNumber);
         }
 
         sc.close();
